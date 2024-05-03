@@ -10,8 +10,7 @@
 // @grant        none
 // ==/UserScript==
 
-window.parse_task = () =>
-{
+window.parse_task = () => {
      const titleElement = document.getElementsByClassName("location-current")[0];
      const taskName = titleElement.innerText;
      const timeLimitElement = document.getElementById("time_limit");
@@ -41,8 +40,13 @@ window.parse_task = () =>
      fetch('http://localhost:4244/', { method: 'POST', body: JSON.stringify(task) })
 }
 
+function add_parse_task_button(el) {
+    el.innerHTML += `<li class="menu__seperator"></li>`;
+    el.innerHTML += `<li class="menu__item"><button onclick="parse_task()" class="menu__link"><span class="icon icon-flag"></span>Parse Task</button></li>`;
+}
+
 (function() {
     'use strict';
-     const titleElement = document.getElementsByClassName("section__title")[0];
-     titleElement.outerHTML += `<button onclick="parse_task()" class="primary button">Parse Task</button>`
+     const titleElement = document.getElementsByClassName("menu")[0];
+     add_parse_task_button(titleElement);
 })();
