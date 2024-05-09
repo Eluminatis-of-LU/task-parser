@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         task-parser-serious-oj
 // @namespace    http://tampermonkey.net/
-// @version      2024-05-03
+// @version      2024-05-09
 // @description  try to take over the world!
 // @author       Araf Al Jami
 // @match        https://judge.eluminatis-of-lu.com/p/*
@@ -47,6 +47,6 @@ function add_parse_task_button(el) {
 
 (function() {
     'use strict';
-     const titleElement = document.getElementsByClassName("menu")[0];
+     const titleElement = document.querySelectorAll(".section--problem-sidebar .menu")[0];
      add_parse_task_button(titleElement);
 })();
